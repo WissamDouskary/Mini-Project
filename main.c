@@ -3,16 +3,14 @@
 #include <stdlib.h>
 
 
+
 int main(){
     char titre[20] ;
     int m=0;
     int MAX_BOOKS =100;
     int MAX_STRING = 100;
     char TITREE=100;
-    int c,x,i;
-
-    //printf("Combien de livres voulez-vous ajouter ?\n");
-    //scanf("%d", &c);
+    int x,i;
 
     char T1[MAX_BOOKS][MAX_STRING];
     char T2[MAX_BOOKS][MAX_STRING];
@@ -21,40 +19,37 @@ int main(){
    // char T5[titre];
 
     do{
+        printf("====================================\n");
     printf("1. ajouter un live au stock. \n");
     printf("2 .afficher tous les livres disponible. \n");
     printf("3 .Rechercher un livre par son titre. \n");
     printf("4 .Mettre a jour la quantite d un livre. \n");
     printf("5 .supprimer un livre. \n");
+    printf("====================================\n");
+    printf("chose une choix :");
     scanf("%d",&x);
 
     switch(x){
 
     case 1:
-        printf("Combien de livres voulez-vous ajouter ?\n");
-    scanf("%d", &c);
-
+    if(m<MAX_BOOKS){
     printf("Ajouter le nom des livres :\n");
-    for (int i = 0; i < c; i++) {
-        printf("Livre %d : ", i + 1);
-        scanf(" %[^\n]", T1[i]);
-    }
+        printf("Livre %d : ", m + 1);
+        scanf(" %[^\n]", T1[m]);
+
     printf("Ajouter le nom des auteurs :\n");
-    for (int i = 0; i < c; i++) {
-        printf("Auteur du livre %d : ", i + 1);
-        scanf(" %[^\n]", T2[i]);
-    }
+        printf("Auteur du livre %d : ", m + 1);
+        scanf(" %[^\n]", T2[m]);
+
 
     printf("Ajouter le prix des livres :\n");
-    for (int i = 0; i < c; i++) {
-        printf("Prix du livre %d : ", i + 1);
-        scanf("%f", &T3[i]);
-    }
+        printf("Prix du livre %d : ", m + 1);
+        scanf("%f", &T3[m]);
+
 
     printf("Ajouter la quantite en stock :\n");
-    for (int i = 0; i < c; i++) {
-        printf("Quantité du livre %d : ", i + 1);
-        scanf("%d", &T4[i]);
+        printf("Quantité du livre %d : ", m + 1);
+        scanf("%d", &T4[m]);
 
     }
     m++;
@@ -66,7 +61,7 @@ case 2:
         }
         else {
         printf("\nInformations sur les livres :\n");
-        for (int i = 0; i < c; i++) {
+        for (int i = 0; i < m; i++) {
         printf("Livre %d :\n", i + 1);
         printf("Nom : %s\n", T1[i]);
         printf("Auteur : %s\n", T2[i]);
@@ -82,26 +77,22 @@ case 2:
 
     break;
     case 3:
+
         printf("saisir le titre de livre : \n");
         scanf("%s",&titre);
         for(int i=0;i<100;i++){
 
           if(strcmp(titre,T1[i])==0 ){
-            printf("Livre %d :\n", i + 1);
+        printf("Livre %d :\n", i + 1);
         printf("Nom : %s\n", T1[i]);
         printf("Auteur : %s\n", T2[i]);
         printf("Prix : %.2f\n", T3[i]);
         printf("Quantité : %d\n\n", T4[i]);
 
-        }else{
-        printf("ce livre n'existe pas ! \n");
-        break;
-}
+          }
+
         }
-
-
-break;
-
+        break;
 
 
 
@@ -110,11 +101,13 @@ break;
         printf("Tapez le nom du livre dont vous souhaitez modifier la quantité : \n");
         scanf(" %[^\n]", titre);
 
+        int trouver = 0;
         for (int i = 0; i < m ; i++) {
         if (strcmp(titre, T1[i]) == 0) {
         printf("Tapez la quantité que vous souhaitez : \n");
         scanf("%d", &T4[i]);
         printf("\nQuantité mise à jour : %d\n", T4[i]);
+        trouver = 1;
 
 }
         else{
@@ -164,5 +157,3 @@ return 0;
 
 
 }
-
-
